@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuentas Bancarias | Yennifer & Wagner</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Montserrat', sans-serif;
+      background:#f7f6f2;
+      color:#1f2937;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      padding: 50px 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+      max-width: 600px;
+      width: 100%;
+      border-top: 4px solid #c9a86a;
+      animation: fadeIn 1.5s ease;
+    }
+
+    h2 {
+      font-family:'Cormorant Garamond', serif;
+      font-size: 3rem;
+      color: #17324d;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .info-group {
+      margin-bottom: 20px;
+      line-height: 1.8;
+      color: #4b5563;
+      font-size: 1.1rem;
+    }
+
+    .info-group strong {
+      color: #17324d;
+      display: inline-block;
+      min-width: 220px;
+    }
+
+    .divider {
+      height: 1px;
+      background: #e5e7eb;
+      margin: 25px 0;
+      border: none;
+    }
+
+    .btn-container {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .btn-back {
+      display:inline-block;
+      padding:15px 35px;
+      border-radius:50px;
+      text-decoration:none;
+      color:white;
+      font-weight:600;
+      background:#17324d;
+      transition:.3s;
+      box-shadow: 0 10px 20px rgba(23,50,77,.25);
+    }
+
+    .btn-back:hover {
+      transform:translateY(-3px);
+      background: #c9a86a;
+      box-shadow: 0 10px 20px rgba(201,168,106,.25);
+    }
+
+    @keyframes fadeIn{
+      from{ opacity:0; transform:translateY(20px); }
+      to{ opacity:1; transform:translateY(0); }
+    }
+    
+    @media(max-width:600px){
+      .info-group strong {
+        display: block;
+        min-width: auto;
+        margin-bottom: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="bgMusic" loop>
+    <source src="c.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+
+  <div class="container">
+    <h2>Cuentas Bancarias</h2>
+    
+    <div class="info-group">
+      <strong>Banco:</strong> BAC Credomatic Colones
+    </div>
+    
+    <div class="info-group">
+      <strong>Cuenta IBAN:</strong> CR63010200009269910506
+    </div>
+    
+    <div class="info-group">
+      <strong>Titular de la Cuenta:</strong> Wagner Li
+    </div>
+
+    <hr class="divider">
+
+    <div class="info-group">
+      <strong>SINPE Móvil:</strong> 61666696
+    </div>
+
+    <div class="info-group">
+      <strong>Titular de la Cuenta:</strong> Wagner Li
+    </div>
+
+    <div class="btn-container">
+      <a href="index.html" class="btn-back">Volver a la invitación</a>
+    </div>
+  </div>
+
+  <script>
+    document.body.addEventListener('click', function startMusic() {
+      const music = document.getElementById('bgMusic');
+      music.volume = 0.03; // Volumen bajo de fondo
+      
+      if (music.paused) {
+        music.play().catch(error => {
+          console.log("Audio bloqueado temporalmente por el navegador.");
+        });
+      }
+      document.body.removeEventListener('click', startMusic);
+    }, { once: true });
+    
+    document.body.addEventListener('touchstart', function startMusicTouch() {
+      const music = document.getElementById('bgMusic');
+      music.volume = 0.3;
+      
+      if (music.paused) {
+        music.play().catch(e => {});
+      }
+      document.body.removeEventListener('touchstart', startMusicTouch);
+    }, { once: true });
+  </script>
+
+</body>
+</html>

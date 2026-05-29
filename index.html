@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Invitación de Boda | Yennifer & Wagner</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Montserrat', sans-serif;
+      background:#f7f6f2;
+      color:#1f2937;
+      overflow-x:hidden;
+    }
+
+    :root{
+      --gold:#c9a86a;
+      --blue:#17324d;
+      --olive:#6b7555;
+      --white:#ffffff;
+      --light:#f8f6f1;
+    }
+
+    header{
+      height:100vh;
+      background:
+        linear-gradient(rgba(10,20,35,.55), rgba(10,20,35,.55)),
+        url('W&Y-07881.jpg') center center/cover no-repeat;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:white;
+      padding:20px;
+    }
+
+    .hero{
+      max-width:900px;
+      animation:fadeIn 2s ease;
+    }
+
+    .hero h3{
+      display: inline-block;
+      font-size: 1rem;
+      letter-spacing: 6px;
+      font-weight: 500;
+      color: var(--gold);
+      margin-bottom: 25px;
+      padding: 12px 30px;
+      border: 1px solid rgba(201, 168, 106, 0.6);
+      background: rgba(23, 50, 77, 0.45);
+      backdrop-filter: blur(6px);
+      border-radius: 50px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero h1{
+      font-family:'Cormorant Garamond', serif;
+      font-size:5rem;
+      font-weight:600;
+      margin-bottom:10px;
+    }
+
+    .hero p{
+      font-size:1.2rem;
+      line-height:1.8;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:30px;
+      padding:15px 35px;
+      border:1px solid var(--gold);
+      color:white;
+      text-decoration:none;
+      letter-spacing:2px;
+      transition:.3s;
+      background:rgba(201,168,106,.15);
+      backdrop-filter:blur(4px);
+    }
+
+    .btn:hover{
+      background:var(--gold);
+      transform:translateY(-3px);
+    }
+
+    section{
+      padding:90px 10%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:3rem;
+      color:var(--blue);
+      margin-bottom:15px;
+    }
+
+    .gold-line{
+      width:90px;
+      height:2px;
+      background:var(--gold);
+      margin:auto;
+    }
+
+    .invited{
+      background:white;
+      text-align:center;
+      padding:70px 20px;
+    }
+
+    .invited h2{
+      font-family:'Cormorant Garamond', serif;
+      color:var(--blue);
+      font-size:3rem;
+      margin-bottom:20px;
+    }
+
+    .invited p{
+      max-width:800px;
+      margin:auto;
+      line-height:2;
+      color:#4b5563;
+      font-size:1.1rem;
+    }
+
+    .details{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:white;
+      padding:40px 30px;
+      border-radius:18px;
+      box-shadow:0 10px 30px rgba(0,0,0,.08);
+      text-align:center;
+      border-top:4px solid var(--gold);
+      transition:.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+    }
+
+    .card h3{
+      color:var(--olive);
+      margin-bottom:15px;
+      font-size:1.4rem;
+    }
+
+    .card p{
+      line-height:1.8;
+      color:#4b5563;
+    }
+
+    .verse{
+      background:linear-gradient(135deg,var(--blue),#284c71);
+      color:white;
+      text-align:center;
+      border-radius:25px;
+      padding:70px 40px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .verse::before{
+      content:"“";
+      position:absolute;
+      font-size:12rem;
+      opacity:.08;
+      top:-40px;
+      left:30px;
+      font-family:serif;
+    }
+
+    .verse p{
+      font-size:1.3rem;
+      line-height:2;
+      max-width:900px;
+      margin:auto;
+      font-style:italic;
+    }
+
+    .verse h4{
+      margin-top:25px;
+      color:var(--gold);
+      letter-spacing:2px;
+    }
+
+    .brochure{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:40px;
+      align-items:center;
+    }
+
+    .brochure img{
+      width:100%;
+      height: 100%;
+      max-height: 550px;
+      object-fit: cover;
+      object-position: center;
+      border-radius:20px;
+      box-shadow:0 10px 35px rgba(0,0,0,.15);
+    }
+
+    .brochure-content{
+      background:white;
+      padding:50px;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,.08);
+    }
+
+    .brochure-content h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:3rem;
+      color:var(--blue);
+      margin-bottom:20px;
+    }
+
+    .brochure-content p{
+      line-height:2;
+      color:#4b5563;
+      margin-bottom:20px;
+      text-align: justify; 
+    }
+
+    .highlight{
+      color:var(--gold);
+      font-weight:600;
+    }
+
+    .button-group{
+      margin-top:35px;
+      text-align: center;
+    }
+
+    .button-group a{
+      display:inline-block;
+      margin:10px;
+      padding:18px 35px;
+      border-radius:50px;
+      text-decoration:none;
+      color:white;
+      font-weight:600;
+      transition:.3s;
+    }
+
+    .button-group a:hover{
+      transform:translateY(-3px);
+    }
+
+    .whatsapp-btn{
+      background:#25D366;
+      box-shadow:0 10px 20px rgba(37,211,102,.25);
+    }
+
+    .waze-btn{
+      background:#82B2D1; 
+      box-shadow:0 10px 20px rgba(130,178,209,.25);
+    }
+
+    .maps-btn{
+      background:#6B8E6A; 
+      box-shadow:0 10px 20px rgba(107,142,106,.25);
+    }
+
+    footer{
+      background:#102338;
+      color:white;
+      text-align:center;
+      padding:40px 20px;
+    }
+
+    footer p{
+      line-height:1.8;
+      color:#d1d5db;
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(40px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:3.2rem;
+      }
+
+      .hero p{
+        font-size:1rem;
+      }
+
+      .section-title h2{
+        font-size:2.4rem;
+      }
+
+      .brochure-content{
+        padding:35px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <audio id="bgMusic" loop>
+    <source src="c.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+
+  <header>
+
+    <div class="hero">
+
+      <h3>ESTÁS INVITADO</h3>
+
+      <h1>Yennifer & Wagner</h1>
+
+      <p>
+        Con mucha alegría y amor,<br>
+        queremos compartir contigo uno de los momentos más importantes de nuestras vidas.
+      </p>
+
+      <a href="#detalles" class="btn">
+        Ver Invitación
+      </a>
+
+    </div>
+
+  </header>
+
+  <section class="invited">
+
+    <h2>Nos Encantaría Contar Contigo</h2>
+
+    <p>
+      Tu presencia hará aún más especial este momento tan importante para nosotros.
+      Celebremos juntos el amor, la unión y el comienzo de una nueva etapa.
+    </p>
+
+  </section>
+
+  <section id="detalles">
+
+    <div class="section-title">
+
+      <h2>Nuestra Boda</h2>
+
+      <div class="gold-line"></div>
+
+    </div>
+
+    <div class="details">
+
+      <div class="card">
+        <h3>Fecha</h3>
+
+        <p>
+          Domingo<br>
+          <strong>09 de Agosto 2026, 4:00 PM</strong>
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Lugar</h3>
+
+        <p>
+          Hacienda Pinares<br>
+          Tres Ríos, Cartago<br>
+          Costa Rica
+        </p>
+        
+        <div class="button-group" style="margin-top: 15px;">
+          <a
+            class="waze-btn"
+            style="padding: 12px 25px; font-size: 0.9rem; margin: 5px 0; display: block;"
+            href="https://ul.waze.com/ul?ll=9.89851007%2C-83.97739522&navigate=yes&zoom=17&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location"
+            target="_blank">
+            Ver ubicación en Waze
+          </a>
+          <br>
+          <a
+            class="maps-btn"
+            style="padding: 12px 25px; font-size: 0.9rem; margin: 5px 0; display: block;"
+            href="https://maps.app.goo.gl/BZrqn6dVZbVn7ksq7"
+            target="_blank">
+            Ver ubicación Google Maps
+          </a>
+        </div>
+
+      </div>
+
+      <div class="card">
+        <h3>Celebración</h3>
+
+        <p>
+          Una noche especial y llena de amor,<br>
+          rodeados de familia y amigos.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section>
+
+    <div class="verse">
+
+      <p>
+        “Mejor son dos que uno solo... Y es que, si uno de ellos cae, el otro puede ayudar a su compañero a levantarse. 
+        Pero ¿qué le pasará al que cae si no hay nadie que lo ayude?”.
+      </p>
+
+      <h4>
+        Eclesiastés 4:9, 10 
+      </h4>
+
+    </div>
+
+  </section>
+
+  <section>
+
+    <div class="brochure">
+
+      <div>
+        <img src="W&Y-08001.jpg" alt="Yennifer y Wagner">
+      </div>
+
+      <div class="brochure-content">
+
+        <h2>Con Amor</h2>
+
+        <p>
+          Después de compartir momentos inolvidables,
+          hemos decidido unir nuestras vidas y queremos hacerlo en su presencia,
+          ese es el regalo más grato que nos pueden brindar y lo que más nos llenaría de felicidad.
+        </p>
+
+        <p>
+          Adicionalmente, si las circunstancias lo permiten y desean apoyarnos,
+          contaremos con un buzón en la recepción para aportes
+          en efectivo y un código QR para transferencia.
+        </p>
+        
+        <div style="text-align: center; margin-bottom: 25px;">
+          <a href="regalos.html" style="color: var(--gold); font-weight: 600; text-decoration: underline; font-size: 1.1rem; display: inline-block; margin-bottom: 15px; transition: 0.3s;">
+            Más información aquí
+          </a>
+          <br>
+          <a href="regalos.html" style="display: inline-block;">
+            <img src="qr1.png" alt="Código QR para transferencia" style="width: 150px; height: auto; max-height: 150px; border-radius: 10px; border: 2px solid var(--gold); box-shadow: 0 5px 15px rgba(0,0,0,0.1); padding: 5px; background: white;">
+          </a>
+        </div>
+
+        <p>
+          <span class="highlight">Fecha:</span> 09 de agosto 2026, 4:00 PM<br>
+
+          <span class="highlight">Lugar:</span>
+          Hacienda Pinares, Tres Ríos, Cartago
+        </p>
+
+        <p>
+          Gracias por acompañarnos.
+        </p>
+
+        <div class="button-group">
+
+          <a
+            class="whatsapp-btn"
+            href="https://wa.me/50661666696?text=Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Yennifer%20y%20Wagner"
+            target="_blank">
+
+            Confirmar por WhatsApp
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+
+    <p>
+      Yennifer & Wagner<br>
+      09 de Agosto 2026, 4:00 PM<br>
+      Hacienda Pinares · Tres Ríos · Cartago · Costa Rica
+    </p>
+
+  </footer>
+
+  <script>
+    // Se asegura de que la música inicie cuando el invitado toque cualquier parte de la pantalla
+    document.body.addEventListener('click', function startMusic() {
+      const music = document.getElementById('bgMusic');
+      
+      // Intenta reproducir la música
+      if (music.paused) {
+        music.play().catch(error => {
+          console.log("El navegador aún bloquea el sonido. Necesita más interacción.");
+        });
+      }
+      
+      // Remueve el evento para que no intente ejecutarse cada vez que hagan clic
+      document.body.removeEventListener('click', startMusic);
+    }, { once: true });
+    
+    // Lo mismo para cuando deslizan la pantalla en el celular (Touch)
+    document.body.addEventListener('touchstart', function startMusicTouch() {
+      const music = document.getElementById('bgMusic');
+      
+      if (music.paused) {
+        music.play().catch(e => {});
+      }
+      
+      document.body.removeEventListener('touchstart', startMusicTouch);
+    }, { once: true });
+  </script>
+
+</body>
+</html>
