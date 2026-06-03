@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Invitation de Mariage Virtuel | Yennifer & Wagner</title>
+  <title>Invitación de Boda Virtual | Yennifer & Wagner</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
@@ -20,9 +20,9 @@
       background: #102338; 
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start; 
       min-height: 100vh;
-      padding: 20px;
+      padding: 40px 20px; 
     }
 
     /* ESTILO DE TARJETA DIGITAL (FLYER VERTICAL) */
@@ -32,7 +32,10 @@
       min-height: 850px;
       background: 
         linear-gradient(rgba(10,20,35,0.7), rgba(10,20,35,0.85)),
-        url('W&Y-07881.jpg') center center/cover no-repeat;
+        url('W&Y-07881.jpg') no-repeat;
+      /* CAMBIO CLAVE: Ajusta la posición del fondo para centrar a las personas */
+      background-position: center 30%; 
+      background-size: cover;
       color: white;
       display: flex;
       flex-direction: column;
@@ -46,6 +49,7 @@
       overflow: hidden;
       border: 1px solid rgba(201, 168, 106, 0.3);
       animation: fadeIn 2s ease;
+      margin: auto; 
     }
 
     .pill {
@@ -127,14 +131,14 @@
     }
 
     /* ESTILOS PARA EL VERSÍCULO BÍBLICO */
-    .verse-fr {
+    .verse-es {
       margin-top: 10px;
       padding-top: 25px;
       border-top: 1px solid rgba(201, 168, 106, 0.3);
       width: 100%;
     }
 
-    .verse-fr p {
+    .verse-es p {
       font-size: 0.95rem;
       line-height: 1.7;
       font-style: italic;
@@ -142,7 +146,7 @@
       margin-bottom: 15px;
     }
 
-    .verse-fr h4 {
+    .verse-es h4 {
       color: #c9a86a;
       font-size: 0.85rem;
       letter-spacing: 2px;
@@ -161,8 +165,11 @@
     }
 
     @media(max-width: 500px) {
+      body {
+        padding: 0; 
+      }
       .card-flyer {
-        padding: 30px 20px;
+        padding: 40px 20px;
         border-radius: 0;
         border: none;
         box-shadow: none;
@@ -175,48 +182,45 @@
 <body>
 
   <!-- ELEMENTO DE AUDIO OCULTO -->
-
-   <audio id="bgMusic" loop>
+  <audio id="bgMusic" loop preload="auto">
     <source src="c.mp3" type="audio/mpeg">
     Tu navegador no soporta el elemento de audio.
   </audio>
 
-
   <div class="card-flyer">
     
-    <div class="pill">VOUS ÊTES INVITÉS</div>
+    <div class="pill">ESTÁN INVITADOS</div>
 
     <h1>Yennifer & Wagner</h1>
 
     <p class="intro">
-      Avec beaucoup de joie et d'amour, nous souhaitons partager avec vous l'un des moments les plus importants de notre vie.
+      Con mucha alegría y amor, queremos compartir con ustedes uno de los momentos más importantes de nuestras vidas.
     </p>
 
     <div class="info-box">
-      <h3>Notre Mariage</h3>
+      <h3>Nuestra Boda</h3>
       
       <p>
-        <strong>Dimanche 9 Août 2026</strong><br>
-        16h00 (Heure du Costa Rica)
+        <strong>Domingo 9 de Agosto 2026</strong><br>
+        4:00 PM (Hora de Costa Rica)
       </p>
 
       <p style="margin-bottom: 25px;">
-        <strong>Célébration Virtuelle</strong><br>
-        En direct via Google Meet
+        <strong>Celebración Virtual</strong><br>
+        En vivo por Google Meet
       </p>
 
-      <!-- REEMPLAZA ESTE ENLACE DE ABAJO POR TU LINK REAL DE GOOGLE MEET -->
       <a href="https://meet.google.com/ngz-skdv-bir?authuser=1" class="btn-meet" target="_blank">
-        Rejoindre la cérémonie
+        Unirse a la ceremonia
       </a>
     </div>
 
     <!-- SECCIÓN DEL VERSÍCULO -->
-    <div class="verse-fr">
+    <div class="verse-es">
       <p>
-        « Deux valent mieux qu’un, parce qu’ils ont une belle récompense pour leur dur travail. Car si l’un d’eux tombe, l’autre peut le relever. Mais qu’arrivera-t-il à celui qui tombe et qui n’a personne pour le relever ? »
+        « Mejores son dos que uno, porque tienen una buena recompensa por su duro trabajo. Porque, si uno de ellos cae, el otro puede ayudar a su compañero a levantarse. Pero ¿qué le pasará al que cae si no hay nadie que lo ayude a levantarse? »
       </p>
-      <h4>— Ecclésiaste 4:9, 10 —</h4>
+      <h4>— Eclesiastés 4:9, 10 —</h4>
     </div>
 
   </div>
@@ -226,14 +230,24 @@
     let isMusicInitialized = false;
 
     function initAudio() {
+      // Evita que el código se ejecute múltiples veces al tocar la pantalla
       if (isMusicInitialized) return;
+      isMusicInitialized = true;
 
       const audio = document.getElementById('bgMusic');
+      audio.volume = 0.05; // Volumen de respaldo
+
       const AudioContext = window.AudioContext || window.webkitAudioContext;
 
       if (AudioContext) {
         try {
           const audioCtx = new AudioContext();
+          
+          // LÍNEA CLAVE PARA iPHONE: "Despierta" el contexto de audio suspendido
+          if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+          }
+
           const source = audioCtx.createMediaElementSource(audio);
           const gainNode = audioCtx.createGain();
 
@@ -242,24 +256,18 @@
 
           source.connect(gainNode);
           gainNode.connect(audioCtx.destination);
-
-          audio.play().then(() => {
-            isMusicInitialized = true;
-          }).catch(err => console.log("L'audio est toujours bloqué."));
+          
         } catch (e) {
-          audio.volume = 0.05;
-          audio.play();
-          isMusicInitialized = true;
+          console.log("Utilizando método de audio estándar.");
         }
-      } else {
-        audio.volume = 0.05;
-        audio.play();
-        isMusicInitialized = true;
       }
+
+      audio.play().catch(err => console.log("El audio requiere una interacción adicional."));
     }
 
-    document.body.addEventListener('click', initAudio, { once: true });
-    document.body.addEventListener('touchstart', initAudio, { once: true });
+    // Escucha tanto clics como toques en la pantalla (Touch)
+    document.addEventListener('click', initAudio, { once: true });
+    document.addEventListener('touchstart', initAudio, { once: true });
   </script>
 
 </body>
