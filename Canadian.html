@@ -33,7 +33,7 @@
       background: 
         linear-gradient(rgba(10,20,35,0.7), rgba(10,20,35,0.85)),
         url('W&Y-07881.jpg') no-repeat;
-      /* AJUSTE CLAVE: 57% es el punto de equilibrio exacto para que salgan ambos novios */
+      /* LA IMAGEN QUEDA CENTRADA PARA QUE SE VEAN LOS DOS */
       background-position: 57% 25%; 
       background-size: cover;
       color: white;
@@ -181,8 +181,7 @@
 </head>
 <body>
 
-  <!-- ELEMENTO DE AUDIO OCULTO -->
-  <audio id="bgMusic" loop preload="auto">
+  <audio id="bgMusic" loop>
     <source src="c.mp3" type="audio/mpeg">
     Tu navigateur ne supporte pas l'élément audio.
   </audio>
@@ -215,7 +214,6 @@
       </a>
     </div>
 
-    <!-- SECCIÓN DEL VERSÍCULO -->
     <div class="verse-fr">
       <p>
         « Deux valent mieux qu’un, parce qu’ils ont une belle récompense pour leur dur travail. Car si l’un d’eux tombe, l’autre peut le relever. Mais qu’arrivera-t-il à celui qui tombe et qui n’a personne pour le relever ? »
@@ -226,47 +224,31 @@
   </div>
 
   <script>
-    let isMusicInitialized = false;
-
-    function initAudio() {
-      // Evita que el código se ejecute múltiples veces al tocar la pantalla
-      if (isMusicInitialized) return;
-      isMusicInitialized = true;
-
-      const audio = document.getElementById('bgMusic');
-      audio.volume = 0.05; // Volumen de respaldo
-
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-
-      if (AudioContext) {
-        try {
-          const audioCtx = new AudioContext();
-          
-          // LÍNEA CLAVE PARA iPHONE: "Despierta" el contexto de audio suspendido
-          if (audioCtx.state === 'suspended') {
-            audioCtx.resume();
-          }
-
-          const source = audioCtx.createMediaElementSource(audio);
-          const gainNode = audioCtx.createGain();
-
-          // FORZAMOS LA GANANCIA A UN 5% REAL
-          gainNode.gain.value = 0.05;
-
-          source.connect(gainNode);
-          gainNode.connect(audioCtx.destination);
-          
-        } catch (e) {
-          console.log("Utilizando método de audio estándar.");
-        }
+    // Se asegura de que la música inicie cuando el invitado toque cualquier parte de la pantalla
+    document.body.addEventListener('click', function startMusic() {
+      const music = document.getElementById('bgMusic');
+      
+      // Intenta reproducir la música
+      if (music.paused) {
+        music.play().catch(error => {
+          console.log("El navegador aún bloquea el sonido. Necesita más interacción.");
+        });
       }
-
-      audio.play().catch(err => console.log("L'audio nécessite une interaction supplémentaire."));
-    }
-
-    // Escucha tanto clics como toques en la pantalla (Touch)
-    document.addEventListener('click', initAudio, { once: true });
-    document.addEventListener('touchstart', initAudio, { once: true });
+      
+      // Remueve el evento para que no intente ejecutarse cada vez que hagan clic
+      document.body.removeEventListener('click', startMusic);
+    }, { once: true });
+    
+    // Lo mismo para cuando deslizan la pantalla en el celular (Touch)
+    document.body.addEventListener('touchstart', function startMusicTouch() {
+      const music = document.getElementById('bgMusic');
+      
+      if (music.paused) {
+        music.play().catch(e => {});
+      }
+      
+      document.body.removeEventListener('touchstart', startMusicTouch);
+    }, { once: true });
   </script>
 
 </body>
