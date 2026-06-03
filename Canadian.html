@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitation de Mariage Virtuel | Yennifer & Wagner</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #102338; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* ESTILO DE TARJETA DIGITAL (FLYER VERTICAL) */
+    .card-flyer {
+      width: 100%;
+      max-width: 500px;
+      min-height: 850px;
+      background: 
+        linear-gradient(rgba(10,20,35,0.7), rgba(10,20,35,0.85)),
+        url('W&Y-07881.jpg') center center/cover no-repeat;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(201, 168, 106, 0.3);
+      animation: fadeIn 2s ease;
+    }
+
+    .pill {
+      display: inline-block;
+      font-size: 0.85rem;
+      letter-spacing: 5px;
+      font-weight: 500;
+      color: #c9a86a;
+      margin-bottom: 25px;
+      padding: 10px 25px;
+      border: 1px solid rgba(201, 168, 106, 0.6);
+      background: rgba(23, 50, 77, 0.45);
+      backdrop-filter: blur(6px);
+      border-radius: 50px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      line-height: 1;
+    }
+
+    .intro {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 30px;
+      color: #e5e7eb;
+    }
+
+    .info-box {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(201, 168, 106, 0.4);
+      border-radius: 15px;
+      padding: 30px 20px;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    .info-box h3 {
+      font-family: 'Cormorant Garamond', serif;
+      color: #c9a86a;
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+    }
+
+    .info-box p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .info-box strong {
+      color: #ffffff;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .btn-meet {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 15px 30px;
+      background: #c9a86a;
+      color: #17324d;
+      font-weight: 600;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 0.95rem;
+    }
+
+    .btn-meet:hover {
+      background: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(255,255,255,0.2);
+    }
+
+    /* ESTILOS PARA EL VERSÍCULO BÍBLICO */
+    .verse-fr {
+      margin-top: 10px;
+      padding-top: 25px;
+      border-top: 1px solid rgba(201, 168, 106, 0.3);
+      width: 100%;
+    }
+
+    .verse-fr p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      font-style: italic;
+      color: #d1d5db;
+      margin-bottom: 15px;
+    }
+
+    .verse-fr h4 {
+      color: #c9a86a;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(40px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @media(max-width: 500px) {
+      .card-flyer {
+        padding: 30px 20px;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        min-height: 100vh;
+      }
+      h1 { font-size: 3.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ELEMENTO DE AUDIO OCULTO -->
+  <audio id="bgMusic" loop>
+    <source src="c.mp3" type="audio/mpeg" crossorigin="anonymous">
+    Tu navigateur ne supporte pas l'élément audio.
+  </audio>
+
+  <div class="card-flyer">
+    
+    <div class="pill">VOUS ÊTES INVITÉS</div>
+
+    <h1>Yennifer & Wagner</h1>
+
+    <p class="intro">
+      Avec beaucoup de joie et d'amour, nous souhaitons partager avec vous l'un des moments les plus importants de notre vie.
+    </p>
+
+    <div class="info-box">
+      <h3>Notre Mariage</h3>
+      
+      <p>
+        <strong>Dimanche 9 Août 2026</strong><br>
+        16h00 (Heure du Costa Rica)
+      </p>
+
+      <p style="margin-bottom: 25px;">
+        <strong>Célébration Virtuelle</strong><br>
+        En direct via Google Meet
+      </p>
+
+      <!-- REEMPLAZA ESTE ENLACE DE ABAJO POR TU LINK REAL DE GOOGLE MEET -->
+      <a href="https://meet.google.com/ngz-skdv-bir?authuser=1" class="btn-meet" target="_blank">
+        Rejoindre la cérémonie
+      </a>
+    </div>
+
+    <!-- SECCIÓN DEL VERSÍCULO -->
+    <div class="verse-fr">
+      <p>
+        « Deux valent mieux qu’un, parce qu’ils ont une belle récompense pour leur dur travail. Car si l’un d’eux tombe, l’autre peut le relever. Mais qu’arrivera-t-il à celui qui tombe et qui n’a personne pour le relever ? »
+      </p>
+      <h4>— Ecclésiaste 4:9, 10 —</h4>
+    </div>
+
+  </div>
+
+  <!-- SCRIPT AVANZADO: WEB AUDIO API PARA FORZAR EL VOLUMEN AL 5% -->
+  <script>
+    let isMusicInitialized = false;
+
+    function initAudio() {
+      if (isMusicInitialized) return;
+
+      const audio = document.getElementById('bgMusic');
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+
+      if (AudioContext) {
+        try {
+          const audioCtx = new AudioContext();
+          const source = audioCtx.createMediaElementSource(audio);
+          const gainNode = audioCtx.createGain();
+
+          // FORZAMOS LA GANANCIA A UN 5% REAL
+          gainNode.gain.value = 0.05;
+
+          source.connect(gainNode);
+          gainNode.connect(audioCtx.destination);
+
+          audio.play().then(() => {
+            isMusicInitialized = true;
+          }).catch(err => console.log("L'audio est toujours bloqué."));
+        } catch (e) {
+          audio.volume = 0.05;
+          audio.play();
+          isMusicInitialized = true;
+        }
+      } else {
+        audio.volume = 0.05;
+        audio.play();
+        isMusicInitialized = true;
+      }
+    }
+
+    document.body.addEventListener('click', initAudio, { once: true });
+    document.body.addEventListener('touchstart', initAudio, { once: true });
+  </script>
+
+</body>
+</html>
